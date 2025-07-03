@@ -1,0 +1,237 @@
+body {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Header/Nav */
+.header-bar {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f6a700;
+    box-shadow: 0 2px 12px rgba(31, 38, 135, 0.07);
+}
+.header-bar strong {
+    font-size: 1.2rem;
+    color: #f6a700;
+    letter-spacing: 1px;
+}
+.nav-buttons a {
+    margin-right: 12px;
+    text-decoration: none;
+}
+.nav-buttons .btn {
+    border-radius: 18px;
+    font-weight: 500;
+    padding: 6px 18px;
+    font-size: 1rem;
+}
+.logout {
+    font-size: 15px;
+    border-radius: 18px;
+    padding: 6px 18px;
+}
+
+/* Login/Register Card */
+/* Botón naranja personalizado para header */
+.btn-orange-header {
+    color: #fff;
+    background-color: #f6a700;
+    border: 1px solid #f6a700;
+    border-radius: 18px;
+    font-weight: 500;
+    padding: 6px 18px;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-orange-header:hover, .btn-orange-header.active {
+    background-color: #cf9203;
+    color: #fff;
+    border-color: #ffb300;
+}
+.login-card, .register-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
+    padding: 48px 36px 36px 36px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    width: 100%;
+    max-width: 420px;
+    min-height: 480px;
+    position: relative;
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.login-logo, .register-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login-card h3, .register-card h3 {
+    font-weight: 700;
+    color: #f6a700;
+    margin-bottom: 24px;
+}
+.form-label {
+    color: #333;
+    font-weight: 500;
+}
+.form-control, .form-select {
+    border-radius: 12px;
+    border: 1px solid #f6a700;
+}
+.btn-primary, .btn-success {
+    background: linear-gradient(90deg, #f6a700 0%, #fda085 100%);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background 0.3s;
+    color: #fff;
+}
+.btn-primary:hover, .btn-success:hover {
+    background: linear-gradient(90deg, #fda085 0%, #f6a700 100%);
+    color: #fff;
+}
+.text-center a {
+    color: #f6a700;
+    font-weight: 500;
+}
+.alert {
+    border-radius: 10px;
+}
+
+/* Home Cards */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 10px 40px;
+}
+.welcome-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px rgba(31, 38, 135, 0.15);
+}
+.subtitle {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 38px;
+    text-shadow: 0 2px 8px rgba(31, 38, 135, 0.10);
+}
+.card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 36px;
+    width: 100%;
+    max-width: 1200px;
+}
+.flip-card {
+    perspective: 1200px;
+    width: 340px;
+    height: 410px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.13);
+    cursor: pointer;
+    background: transparent;
+    transition: box-shadow 0.3s;
+}
+.flip-card:hover {
+    box-shadow: 0 16px 40px rgba(31, 38, 135, 0.18);
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(.4,2,.6,1);
+    transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(31, 38, 135, 0.07);
+}
+.flip-card-front {
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.flip-card-back {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    color: #fff;
+    transform: rotateY(180deg);
+    padding: 32px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.flip-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+.flip-card .card-body {
+    padding: 22px 18px 18px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #f6a700;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .card-section {
+        gap: 24px;
+    }
+    .flip-card {
+        width: 95vw;
+        max-width: 340px;
+    }
+}
+@media (max-width: 700px) {
+    .main-content {
+        padding: 30px 2vw 20px;
+    }
+    .card-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+}
