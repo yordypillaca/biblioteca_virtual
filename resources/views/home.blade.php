@@ -41,7 +41,7 @@
             }
         });
     </script>
-    <!-- MAIN CONTENT -->
+
     <div class="main-content">
         <div class="welcome-title">Bienvenido a la Biblioteca Virtual</div>
         <div class="subtitle">Explora, aprende y descubre nuevas historias y conocimientos.</div>

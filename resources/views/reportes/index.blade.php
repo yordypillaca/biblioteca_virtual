@@ -12,10 +12,9 @@
 <body>
     <x-header />
 
-    <!-- CONTENIDO -->
     <div class="main-content">
         <div class="row">
-            <!-- Filtro de reporte a la izquierda -->
+
             <div class="col-lg-6 mb-4">
                 <div class="register-card h-100 p-4 shadow">
                     <h3 class="mb-4"><i class="bi bi-bar-chart-line"></i> Reportes de Préstamos</h3>
@@ -30,7 +29,6 @@
                 </div>
             </div>
 
-            <!-- Libros más prestados a la derecha -->
             <div class="col-lg-6 mb-4">
                 <div class="register-card h-100 p-4 shadow">
                     <h3><i class="bi bi-book"></i> Libros más prestados</h3>
@@ -56,7 +54,6 @@
                         </tbody>
                     </table>
 
-                    <!-- Usuarios más activos -->
                     <h3><i class="bi bi-person"></i> Usuarios más activos</h3>
                     <table class="table table-bordered table-hover">
                         <thead>

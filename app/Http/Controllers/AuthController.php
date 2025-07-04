@@ -10,13 +10,11 @@ use App\Models\Usuario;
 
 class AuthController extends Controller
 {
-    // Mostrar formulario de registro
     public function showRegisterForm()
     {
         return view('auth.register');
     }
 
-    // Registro de usuario o bibliotecario
     public function register(Request $request)
     {
         $request->validate([
@@ -25,17 +23,14 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        // Toma el rol seleccionado en el formulario, pero valida que sea uno permitido
         $rol = in_array($request->rol, ['usuario', 'bibliotecario']) ? $request->rol : 'usuario';
 
-        // Si hay un bibliotecario autenticado y seleccionó otro rol válido
         if (Auth::check() && Auth::user()->rol === 'bibliotecario') {
             if (in_array($request->rol, ['usuario', 'bibliotecario'])) {
                 $rol = $request->rol;
             }
         }
 
-        // Llamar procedimiento almacenado para insertar en Oracle
         try {
             DB::statement("BEGIN agregar_usuario(:nombre, :email, :password, :rol); END;", [
                 'nombre'   => $request->nombre,
@@ -50,13 +45,11 @@ class AuthController extends Controller
         return redirect('/login')->with('success', ucfirst($rol) . ' registrado exitosamente.');
     }
 
-    // Mostrar formulario de login
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Autenticación
     public function login(Request $request)
     {
         $request->validate([
@@ -73,7 +66,6 @@ class AuthController extends Controller
         return back()->with('error', 'Credenciales incorrectas.');
     }
 
-    // Logout
     public function logout()
     {
         Auth::logout();

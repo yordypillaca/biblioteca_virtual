@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Reportes (solo bibliotecario)
+// Reportes
 Route::get('/reportes', [ReporteController::class, 'index'])->middleware(['auth', 'can:bibliotecario']);
 
 // Libros
@@ -40,7 +40,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
-// Usuarios (solo bibliotecario)
+// Usuarios
 Route::get('/usuarios', [UsuarioController::class, 'index'])->middleware(['auth', 'can:bibliotecario']);
 Route::get('/usuarios/eliminar/{id}', [UsuarioController::class, 'destroy'])->middleware(['auth', 'can:bibliotecario']);
 

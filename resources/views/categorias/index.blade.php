@@ -12,14 +12,15 @@
 <body>
     <x-header />
 
-    <!-- CONTENIDO -->
     <div class="main-content">
         @if (session('success'))
             <div class="alert alert-success text-center">{{ session('success') }}</div>
         @endif
+        @if (session('error'))
+            <div class="alert alert-danger text-center">{{ session('error') }}</div>
+        @endif
 
         <div class="row">
-            <!-- FORMULARIO A LA IZQUIERDA -->
             <div class="col-lg-6 mb-4">
                 <div class="register-card mx-auto mb-4" style="max-width:500px;">
                     <h3 class="mb-4 text-center"><i class="bi bi-tags"></i> Agregar Nueva Categoría</h3>
@@ -38,7 +39,6 @@
                 </div>
             </div>
 
-            <!-- LISTADO A LA DERECHA -->
             <div class="col-lg-6 mb-4">
                 <div class="register-card mx-auto mb-4" style="max-width:500px;">
                     <h3 class="mb-3"><i class="bi bi-list-ul"></i> Lista de Categorías</h3>

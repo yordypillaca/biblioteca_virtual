@@ -7,14 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
-    // Mostrar todas las categorías
     public function index()
     {
         $categorias = DB::select("SELECT * FROM categorias ORDER BY id_categoria");
         return view('categorias.index', compact('categorias'));
     }
 
-    // Agregar nueva categoría (usando el paquete)
     public function store(Request $request)
     {
         $request->validate([
@@ -28,13 +26,18 @@ class CategoriaController extends Controller
         return redirect('/categorias')->with('success', 'Categoría agregada');
     }
 
-    // Eliminar categoría (usando el paquete)
     public function destroy($id)
     {
-        DB::statement("BEGIN pkg_categorias.eliminar_categoria(:id); END;", [
-            'id' => $id
-        ]);
-
-        return redirect('/categorias')->with('success', 'Categoría eliminada');
+        try {
+            DB::statement("BEGIN pkg_categorias.eliminar_categoria(:id); END;", [
+                'id' => $id
+            ]);
+            return redirect('/categorias')->with('success', 'Categoría eliminada');
+        } catch (\Exception $e) {
+            if (strpos($e->getMessage(), 'ORA-02292') !== false) {
+                return redirect('/categorias')->with('error', 'No se puede eliminar la categoría porque tiene libros asociados.');
+            }
+            return redirect('/categorias')->with('error', 'Ocurrió un error al eliminar la categoría.');
+        }
     }
 }

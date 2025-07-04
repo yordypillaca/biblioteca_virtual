@@ -12,7 +12,6 @@
 <body>
     <x-header />
 
-    <!-- CONTENIDO -->
     <div class="main-content">
 
         @if (session('success'))
@@ -20,7 +19,6 @@
         @endif
 
         <div class="row">
-            <!-- FORMULARIO A LA IZQUIERDA -->
             <div class="col-lg-5 mb-4">
                 <div class="register-card mx-auto mb-4" style="max-width:600px;">
                     <h3 class="mb-4 text-center"><i class="bi bi-arrow-left-right"></i> Registrar nuevo préstamo
@@ -66,7 +64,6 @@
                 </div>
             </div>
 
-            <!-- HISTORIAL A LA DERECHA -->
             <div class="col-lg-7 mb-4">
                 <div class="card shadow table-container p-4 h-100">
                     <h3 class="mb-3"><i class="bi bi-clock-history"></i> Historial de Préstamos</h3>

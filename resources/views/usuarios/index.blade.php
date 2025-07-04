@@ -12,11 +12,13 @@
 <body>
     <x-header />
 
-    <!-- CONTENIDO -->
     <div class="main-content">
 
         @if (session('success'))
             <div class="alert alert-success text-center">{{ session('success') }}</div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger text-center">{{ session('error') }}</div>
         @endif
 
         <div class="register-card mx-auto mb-4" style="max-width:1100px;">

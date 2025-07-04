@@ -23,7 +23,7 @@ class Usuario extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($usuario) {
-            $nextId = \DB::select("SELECT SEQ_USUARIO.NEXTVAL AS ID FROM DUAL")[0]->id;
+            $nextId = \DB::select("SELECT SEQ_USUARIOS.NEXTVAL AS ID FROM DUAL")[0]->id;
             $usuario->id_usuario = $nextId;
         });
     }

@@ -9,7 +9,6 @@ class ReporteController extends Controller
 {
     public function index(Request $request)
     {
-        // Obtener los filtros de fecha si existen
         $desde = $request->input('desde');
         $hasta = $request->input('hasta');
 
@@ -24,7 +23,7 @@ class ReporteController extends Controller
             ];
         }
 
-        // Consulta de libros más prestados
+
         $libros = DB::select("
             SELECT l.titulo, COUNT(*) as cantidad
             FROM prestamos p
@@ -34,7 +33,6 @@ class ReporteController extends Controller
             ORDER BY cantidad DESC
         ", $params);
 
-        // Consulta de usuarios que más han prestado
         $usuarios = DB::select("
             SELECT u.nombre, COUNT(*) as prestamos
             FROM prestamos p
@@ -44,7 +42,6 @@ class ReporteController extends Controller
             ORDER BY prestamos DESC
         ", $params);
 
-        // Retornar vista con los datos
         return view('reportes.index', compact('libros', 'usuarios', 'desde', 'hasta'));
     }
 }
